@@ -1,14 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv/config');
 const bodyParser = require('body-parser');
 const app = express();
-const url = 'mongodb://localhost/CRUD'
-
-
-app.use(bodyParser.json());
+const url = 'mongodb://localhost/CRUD'//db connection url
 //Import routes
 const postRoutes = require('./routes/posts')
+
+app.use(cors());
+app.use(bodyParser.json());
+
 
 //middlewere
 app.use('/posts',postRoutes)
